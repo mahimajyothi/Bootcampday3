@@ -1,0 +1,54 @@
+import java.util.*;
+
+public class Scholars {
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		String[] names = new String[5];   //  Initializing arrays for names of the scholar
+		int[][] mark = new int[5][]; // initializing marks array
+
+		System.out.println("Enter the names of the Scholars :");
+
+		for (int i = 0; i < 5; i++)   // Takes names of the scholar
+		{
+			names[i] = in.nextLine();
+		}
+
+		System.out.println("Enter the marks of scholar :"); 
+		// Takes marks of the Scholars
+
+		mark[0] = new int[2];
+
+		mark[1] = new int[3];
+
+		mark[2] = new int[1];
+
+		mark[3] = new int[5];
+
+		mark[4] = new int[4];
+
+		for (int i = 0; i < mark.length; i++) {  // Takes marks of the scholars
+			for (int j = 0; j < mark[i].length; j++) {
+				mark[i][j] = in.nextInt();
+			}
+		}
+		for (int i = 0; i < mark.length; i++) {  // for calculating sum and average
+
+			int sum = 0, avg = 0;
+
+			for (int j = 0; j < mark[i].length; j++) {
+
+				sum = sum + mark[i][j]; // Sum calculation
+
+				avg = sum / mark[i].length; // Average calculation
+
+			}
+
+			System.out.println("Sum of "+ names[i] +"'S marks is : " + sum);
+
+			System.out.println("Average of "+names[i] + "'S marks is : " + avg);
+
+		}
+		in.close();
+	}
+}
+
