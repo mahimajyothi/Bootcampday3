@@ -1,0 +1,70 @@
+import java.util.Scanner;
+
+public class Matrix {
+	//Declaring Variables
+	int rowsOfmatrix1;
+	int coloumnsOfMatrix1;
+	int rowsOfMatrix2;
+	int coloumnsOfMatrix2;
+	int rows;
+	int coloumns;
+
+	public void transpose() {
+		Scanner in = new Scanner(System.in); // Scanner class
+		System.out.println("Transpose Matrix");  // Taking inputs from the console
+		System.out.println("enter number of rows of matrix");
+		rows = in.nextInt();
+		System.out.println("enter number of columns of  matrix");
+		coloumns = in.nextInt();
+		System.out.println("enter values for matrix");
+		int array[][] = new int[rows][coloumns];  // Original array
+		int[][] temparray = new int[coloumns][rows];  // temporary array to store elements
+		for (int outer = 0; outer < rows; outer++) {  
+			for (int inner = 0; inner < coloumns; inner++) {
+				array[outer][inner] = in.nextInt();
+			}
+		}
+		if (rows == coloumns) {
+			System.out.println("Transpose of a matrix is:");
+			// calculating transpose of matrix
+			for (int outer = 0; outer < coloumns; outer++) {   //copying the array elements to temp
+				for (int inner = 0; inner < coloumns; inner++) {
+					int temprory = array[outer][inner];
+					temparray[inner][outer] = temprory;
+				}
+			}
+		}
+		if (rows > coloumns || rows < coloumns) {
+			System.out.println("Transpose of a matrix is:");
+			int ref1 = 0;
+			// calculating transpose of matrix
+			for (int outer = 0; outer < rows; outer++) {
+				if (ref1 != 0) {
+					ref1++;
+				}
+				for (int inner = 0; inner < coloumns; inner++) {  // for transpose of the matrix 
+					int temporary = array[outer][inner];
+					temparray[ref1][outer] = temporary;
+					++ref1;
+					if (ref1 == coloumns) {
+						ref1 = 0;
+					}
+
+				}
+			}
+		}
+		for (int[] element : temparray) {  // printing output array
+			for (int index : element) {
+				System.out.print(" " + index);
+			}
+			System.out.println();
+		}
+		in.close();  //scanner close
+	}
+
+	public static void main(String[] args) {
+		Matrix matrix = new Matrix(); // creating object
+		matrix.transpose(); // calling method
+
+	}
+}
